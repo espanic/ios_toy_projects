@@ -9,21 +9,40 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showMenu = false
+    @EnvironmentObject var viewModel : AuthViewModel
     var body: some View {
+        Group {
+            //no user logged in
+            if viewModel.userSession == nil {
+                LoginView()
+            }else{
+                //have a loggined in user
+                mainInterfaceView
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+extension ContentView {
+    var mainInterfaceView: some View {
         ZStack(alignment: .topLeading) {
             MainTapView()
-                
             if showMenu {
-
-                    Color(.black)
+                Color(.black)
                     .opacity(showMenu ? 0.25 : 0.0)
-
-                .onTapGesture {
-                    withAnimation(.easeInOut){
-                        showMenu = false
+                    .onTapGesture {
+                        withAnimation(.easeInOut){
+                            showMenu = false
+                        }
                     }
-                }
-                .ignoresSafeArea()
+                    .ignoresSafeArea()
             }
             SideMenuView()
                 .frame(width: 300)
@@ -32,7 +51,6 @@ struct ContentView: View {
         }
         .navigationTitle("Home")
         .navigationBarTitleDisplayMode(.inline)
-        
         .toolbar{
             ToolbarItem(placement: .navigationBarLeading) {
                 Button{
@@ -48,11 +66,5 @@ struct ContentView: View {
         }
         .toolbar(showMenu ? .hidden : .visible, for: .navigationBar)
         .animation(.easeInOut, value: showMenu)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }

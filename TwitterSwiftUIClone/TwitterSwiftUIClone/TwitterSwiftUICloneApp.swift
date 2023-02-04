@@ -6,14 +6,23 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct TwitterSwiftUICloneApp: App {
+    
+    @StateObject var viewModel = AuthViewModel()
+    
+    init(){
+        FirebaseApp.configure()
+    }
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
+            NavigationView {
                 ContentView()
+//                ProfilePhotoSelectorView()
             }
+            .environmentObject(viewModel)
         }
     }
 }
