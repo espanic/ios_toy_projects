@@ -9,7 +9,9 @@ import SwiftUI
 
 struct MainTapView: View {
     @State private var selectedIndex = 0
+    let titleArray = ["home", "explore", "notification", "message"]
     var body: some View {
+        
         TabView(selection: $selectedIndex) {
             FeedView()
                 .onTapGesture {
@@ -43,6 +45,9 @@ struct MainTapView: View {
                     Image(systemName: "envelope")
                 }.tag(3)
         }
+        .navigationTitle(titleArray[selectedIndex])
+        .navigationBarTitleDisplayMode(.inline)
+        
     }
 }
 

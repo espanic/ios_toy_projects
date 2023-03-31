@@ -18,9 +18,9 @@ struct TwitterSwiftUICloneApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NavigationView{
                 ContentView()
-//                ProfilePhotoSelectorView()
+                    
             }
             .environmentObject(viewModel)
         }

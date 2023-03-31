@@ -58,6 +58,7 @@ struct RegistrationView: View {
             .padding(.bottom,32)
         }
         .ignoresSafeArea()
+        .toolbar(.hidden)
         
     }
 }

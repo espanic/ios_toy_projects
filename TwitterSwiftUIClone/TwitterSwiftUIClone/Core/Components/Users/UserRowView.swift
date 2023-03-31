@@ -6,17 +6,21 @@
 //
 
 import SwiftUI
-
+import Kingfisher
 struct UserRowView: View {
+    let user : User
     var body: some View {
         HStack(spacing: 12){
-            Circle()
-                .frame(width: 48, height: 48)
+            KFImage(URL(string: user.profileImageUrl))
+                .resizable()
+                .scaledToFill()
+                .clipShape(Circle())
+                .frame(width: 56, height: 56)
             VStack(alignment: .leading, spacing: 4){
-                Text("joker")
+                Text(user.username)
                     .font(.subheadline)
                     .foregroundColor(.black)
-                Text("heath Ledger")
+                Text(user.fullname)
                     .font(.subheadline)
                     .foregroundColor(.gray)
                     .foregroundColor(.black)
@@ -28,8 +32,8 @@ struct UserRowView: View {
     }
 }
 
-struct UserRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserRowView()
-    }
-}
+//struct UserRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UserRowView()
+//    }
+//}

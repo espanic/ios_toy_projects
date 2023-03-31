@@ -70,6 +70,7 @@ struct LoginView: View {
             .foregroundColor(Color(.systemBlue))
         }
         .ignoresSafeArea()
+        .toolbar(.hidden)
         .navigationBarBackButtonHidden(true)
         
     }
