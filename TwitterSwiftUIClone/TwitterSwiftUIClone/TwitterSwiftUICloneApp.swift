@@ -13,6 +13,7 @@ struct TwitterSwiftUICloneApp: App {
     
     @StateObject var viewModel = AuthViewModel()
     
+    
     init(){
         FirebaseApp.configure()
     }
@@ -23,6 +24,7 @@ struct TwitterSwiftUICloneApp: App {
                     
             }
             .environmentObject(viewModel)
+            
         }
     }
 }
